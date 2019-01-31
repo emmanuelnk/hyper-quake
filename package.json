@@ -1,12 +1,11 @@
 {
-  "name": "hyperterm-visor",
-  "version": "0.3.4",
-  "description": "Open your HyperTerm terminal from anywhere with a global hotkey.",
-  "repository": "cwspear/hyperterm-visor",
+  "name": "hyper-quake",
+  "version": "0.0.1",
+  "description": "a quake-style drop down plugin for https://hyper.is/.",
+  "repository": "ratmav/hyper-quake",
   "author": {
-    "name": "Cameron Spear",
-    "email": "cameronspear@gmail.com",
-    "url": "cameronspear.com"
+    "name": "ratmav",
+    "email": "ratmav@protonmail.com"
   },
   "main": "index.js",
   "scripts": {
@@ -21,6 +20,6 @@
   "keywords": [
     "hyperterm",
     "hyperterm-plugin",
-    "visor"
+    "quake"
   ]
 }
