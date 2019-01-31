@@ -12,19 +12,19 @@ if (DEBUG) {
     log.transports.file.level = 'silly';
 }
 
-module.exports = class Visor {
-    constructor(app, visorWindow = null) {
+module.exports = class Quake {
+    constructor(app, quakeWindow = null) {
         this.app = app;
-        this.config = app.config.getConfig().visor || {};
-        this.visorWindow = visorWindow;
-        this.visorWindow.on('close', () => this.handleOnVisorWindowClose());
+        this.config = app.config.getConfig().quake || {};
+        this.quakeWindow = quakeWindow;
+        this.quakeWindow.on('close', () => this.handleOnQuakeWindowClose());
         this.previousAppFocus = null;
 
         if (this.config.hideDock) {
             this.app.dock.hide();
         }
 
-        if (this.visorWindow) {
+        if (this.quakeWindow) {
             this.setBounds();
         }
     }
@@ -33,25 +33,25 @@ module.exports = class Visor {
         debug('toggling window');
 
         console.error('test2');
-        if (!this.visorWindow) {
-            // if no visor window, create one and try toggling again after it's created
-            this.createNewVisorWindow(() => this.setBounds());
+        if (!this.quakeWindow) {
+            // if no quake window, create one and try toggling again after it's created
+            this.createNewQuakeWindow(() => this.setBounds());
             return;
         }
 
-        if (this.visorWindow.isFocused()) {
-            if (!this.visorWindow.isFullScreen()) {
-                this.visorWindow.hide();
+        if (this.quakeWindow.isFocused()) {
+            if (!this.quakeWindow.isFullScreen()) {
+                this.quakeWindow.hide();
             }
             this.returnFocus();
         } else {
             this.setBounds();
-            if (this.visorWindow.isVisible()) {
-                this.visorWindow.focus();
+            if (this.quakeWindow.isVisible()) {
+                this.quakeWindow.focus();
             } else {
                 this.previousAppFocus = BrowserWindow.getFocusedWindow();
-                this.visorWindow.show(() => debug('test'));
-                this.visorWindow.focus();
+                this.quakeWindow.show(() => debug('test'));
+                this.quakeWindow.focus();
             }
         }
     }
@@ -91,19 +91,19 @@ module.exports = class Visor {
         bounds.x = Math.round(bounds.x);
         bounds.height = Math.round(bounds.height);
 
-        this.visorWindow.setBounds(bounds);
+        this.quakeWindow.setBounds(bounds);
     }
 
-    createNewVisorWindow(callback) {
+    createNewQuakeWindow(callback) {
         debug('creating new window');
 
         this.app.createWindow(win => {
-            this.visorWindow = win;
+            this.quakeWindow = win;
 
             // creates a shell in the new window
             win.rpc.emit('termgroup add req');
 
-            this.visorWindow.on('close', () => this.handleOnVisorWindowClose());
+            this.quakeWindow.on('close', () => this.handleOnQuakeWindowClose());
 
             if (callback) {
                 callback();
@@ -120,14 +120,14 @@ module.exports = class Visor {
         }
     }
 
-    handleOnVisorWindowClose() {
+    handleOnQuakeWindowClose() {
         debug('closing');
 
-        this.visorWindow = null;
+        this.quakeWindow = null;
     }
 
     destroy() {
-        this.visorWindow = null;
+        this.quakeWindow = null;
         this.previousAppFocus = null;
 
         debug('destroyed');

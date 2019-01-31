@@ -1,36 +1,36 @@
 'use strict';
 
-const Visor = require('./visor');
+const Visor = require('./quake');
 const log = require('electron-log');
 const registerShortcut = require('hyperterm-register-shortcut');
 
-let visor;
+let quake;
 
 module.exports.onApp = function registerGlobalHotkey(app) {
     // for config changes, etc
-    let visorWindow;
-    if (visor) {
-        visorWindow = visor.visorWindow;
-        visor.destroy();
+    let quakeWindow;
+    if (quake) {
+        quakeWindow = quake.quakeWindow;
+        quake.destroy();
     }
 
-    // on load, set the first window that loads as the visor
-    if (!visorWindow) {
+    // on load, set the first window that loads as the quake
+    if (!quakeWindow) {
         const windows = app.getWindows();
         if (windows.size === 1) {
-            visorWindow = windows.values().next().value;
+            quakeWindow = windows.values().next().value;
         }
     }
 
-    visor = new Visor(app, visorWindow);
-    registerShortcut('visor', () => visor.toggleWindow())(app);
+    quake = new Visor(app, quakeWindow);
+    registerShortcut('quake', () => quake.toggleWindow())(app);
 };
 
 module.exports.onUnload = function unregisterGlobalHotkey() {
     // as far as I know, onUnload can't be called before onApp, but just in case...
-    if (!visor) {
-        console.error('onUnload was called before a visor was created');
+    if (!quake) {
+        console.error('onUnload was called before a quake was created');
     } else {
-        visor.destroy();
+        quake.destroy();
     }
 };
