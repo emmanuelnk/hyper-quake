@@ -67,6 +67,7 @@ module.exports = class Quake {
         const bounds = display.workArea;
         const { height, width } = bounds;
 
+        /*
         switch (this.config.position) {
             case 'bottom':
                 bounds.y += this.config.height || height / 2;
@@ -90,6 +91,7 @@ module.exports = class Quake {
         bounds.width = Math.round(bounds.width);
         bounds.x = Math.round(bounds.x);
         bounds.height = Math.round(bounds.height);
+        */
 
         this.quakeWindow.setBounds(bounds);
     }
