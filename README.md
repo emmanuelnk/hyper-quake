@@ -17,9 +17,11 @@ modules.exports = {
     // other config...
     quake: {
       hotkey: 'CommandOrControl+Shift+Z',
-      position: 'top', // or left, right, bottom
-      width: 200, // Optional, defaults to half of viewable area for horizontal positions, 100% for vertical
-      height: 900, // Optional, defaults to half of viewable area for vertical positions, 100% for horizontal
+      // valid positions: 'top', 'left', 'right', 'bottom'
+      position: 'top',
+      // optional: defaults to 100% of the viewable area.
+      width: 200,
+      height: 900,
     },
   },
   // ...

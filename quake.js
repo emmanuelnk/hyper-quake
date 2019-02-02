@@ -32,7 +32,6 @@ module.exports = class Quake {
     toggleWindow() {
         debug('toggling window');
 
-        console.error('test2');
         if (!this.quakeWindow) {
             // if no quake window, create one and try toggling again after it's created
             this.createNewQuakeWindow(() => this.setBounds());
@@ -50,7 +49,7 @@ module.exports = class Quake {
                 this.quakeWindow.focus();
             } else {
                 this.previousAppFocus = BrowserWindow.getFocusedWindow();
-                this.quakeWindow.show(() => debug('test'));
+                this.quakeWindow.show();
                 this.quakeWindow.focus();
             }
         }
@@ -86,12 +85,15 @@ module.exports = class Quake {
                 bounds.height = this.config.height || height;
                 break;
         }
+        */
+
+        bounds.width = this.config.width || width;
+        bounds.height = this.config.height || height;
 
         bounds.y = Math.round(bounds.y);
         bounds.width = Math.round(bounds.width);
         bounds.x = Math.round(bounds.x);
         bounds.height = Math.round(bounds.height);
-        */
 
         this.quakeWindow.setBounds(bounds);
     }
