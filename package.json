@@ -1,6 +1,6 @@
 {
   "name": "hyper-quake",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a quake-style drop down plugin for https://hyper.is/.",
   "repository": "ratmav/hyper-quake",
   "author": {
