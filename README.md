@@ -5,6 +5,15 @@ a quake-style drop down plugin for [hyper](https://hyper.is/).
 
 forked from [hyperterm-visor](https://github.com/CWSpear/hyperterm-visor)
 
+# contribute
+
+1. Run Hyper on dev mode (built from source after cloning repository) like explained in Contribute section in Readme: https://github.com/zeit/hyper#contribute
+2. Copy your config file .hyper.js in cloned repository root directory. Hyper in dev mode will use this one. That means that you can continue to use installed Hyper with your day-to-day config.
+3. After a first run, Hyper on dev mode will have created a new .hyper_plugins in your repository root. Go to <repository_root>/.hyper_plugins/local and create/clone your plugin repo (or make a symlink)
+4 .Edit your dev config, and add your plugin name (directory name in your local directory) in localPlugins array.
+
+Good to know: when you put a console.log() in your plugin code, it will be displayed in App's devtools only if it is executed in a renderer method, like component decorators. If it is located in Electron main process method, like onApp handler, it will be displayed in your terminal where you made your yarn run app.
+
 # installation
 
 In your `~/.hyper.js`, add `hyperterm-quake` to the plugin list.

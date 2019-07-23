@@ -1,7 +1,6 @@
 'use strict';
 
 const Visor = require('./quake');
-const log = require('electron-log');
 const registerShortcut = require('hyperterm-register-shortcut');
 
 let quake;

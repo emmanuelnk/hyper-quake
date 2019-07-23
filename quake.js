@@ -6,12 +6,6 @@ const { BrowserWindow, Menu } = electron;
 const DEBUG = process.env.NODE_ENV === 'development' || process.env.DEBUG || false;
 const isMac = process.platform === 'darwin';
 
-let log;
-if (DEBUG) {
-    log = require('electron-log');
-    log.transports.file.level = 'silly';
-}
-
 module.exports = class Quake {
     constructor(app, quakeWindow = null) {
         this.app = app;
@@ -138,10 +132,3 @@ module.exports = class Quake {
         // @TODO other cleanup?
     }
 };
-
-function debug(...args) {
-    if (DEBUG) {
-        console.error(...args);
-        log.info(...args);
-    }
-}
