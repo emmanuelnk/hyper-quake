@@ -1,6 +1,8 @@
 hyper-quake
 ===========
 
+**DEPRECATED ON 3/31/20. PLEASE USE AN ALTERNATIVE OR FORK AND PUBLISH YOUR OWN MODULE.**
+
 a quake-style drop down plugin for [hyper](https://hyper.is/).
 
 forked from [hyperterm-visor](https://github.com/CWSpear/hyperterm-visor)
